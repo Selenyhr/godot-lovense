@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://f6oi4x57im2c"]
+
+[ext_resource type="Script" uid="uid://cfjiurbdabp0h" path="res://gd_lovense.gd" id="1_4j8f0"]
+[ext_resource type="Script" uid="uid://bpojdpamrxfgt" path="res://tests.gd" id="1_v763p"]
+[ext_resource type="Script" uid="uid://b4r8mv33qxlo0" path="res://gd_lovense_toy_function.gd" id="3_ok7t0"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_v763p")
+do_fail_tests = false
+
+[node name="GDLovense" type="HTTPRequest" parent="."]
+script = ExtResource("1_4j8f0")
+remote_domain = "192.168.0.108"
+remote_port = 20010
+metadata/_custom_type_script = "uid://cfjiurbdabp0h"
+
+[node name="GDLovenseToyFunction" type="Node" parent="." node_paths=PackedStringArray("gd_lovense")]
+script = ExtResource("3_ok7t0")
+gd_lovense = NodePath("../GDLovense")
+metadata/_custom_type_script = "uid://b4r8mv33qxlo0"
