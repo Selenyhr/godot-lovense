@@ -185,12 +185,15 @@ func _sync_toys_list_success(data: Dictionary) -> void:
 			continue
 		connected_toys.append(GDLovenseToy.new_from_api_dict(toys_data[toy_id]))
 
+	last_error = OK
+	_finish_request(true)
 	toys_synced.emit(true)
 
 
 ## Stores the error returned by a failed sync request.
 func _sync_toys_list_fail(error_code: int) -> void:
 	last_error = error_code
+	_finish_request(false)
 	toys_synced.emit(false)
 
 
